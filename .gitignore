@@ -1,0 +1,27 @@
+# Yarn Berry
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+# Uncomment this for zero-installs
+# !.yarn/cache
+
+.pnp.*
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Tests (optional - remove if you want to keep them in repo)
+*.test.ts
+*.testPlayer.ts
+# *.test.js
+
+# Ignore compiled JS only if you're using TS and don't want to commit builds
+# Otherwise remove this line
+# *.js
