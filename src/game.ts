@@ -2,6 +2,7 @@ import type { Board, Player } from "./types.js";
 import { newBoard, createBoard } from "./board.js";
 import readline from "node:readline/promises";
 import { checkWinner } from "./winner.js";
+import chalk from "chalk";
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -13,17 +14,17 @@ async function pause(ms = 1700) {
 }
 
 function resetBoard(): Board {
-  console.log("\n WHYYYY, why did you restart???");
+  console.log(chalk.cyan.bold("\n WHYYYY, why did you restart???"));
   return createBoard();
 }
 
 function isInvalidMove(board: Board, row: number, col: number): string | null {
   if (isNaN(row) || isNaN(col) || row < 0 || row > 2 || col < 0 || col > 2) {
-    return "Invalid input! Use row,col from 1-3.";
+    return (chalk.red("Invalid input! Use row,col from 1-3."));
   }
 
   if (board.grid[row]?.[col]?.value !== " ") {
-    return "Cell already taken. Choose another.";
+    return (chalk.red("Cell already taken. Choose another."));
   }
 
   return null;
@@ -41,7 +42,7 @@ export async function startGame(): Promise<string> {
     );
 
     if (input.toLowerCase() === "bye") {
-      console.log("\n Thats what I thought, QUITTER!!!");
+      console.log(chalk.cyan.bold("\n Thats what I thought, QUITTER!!!"));
       rl.close();
       process.exit(0);
     }
